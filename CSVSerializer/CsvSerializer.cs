@@ -147,8 +147,8 @@ namespace CSVSerializer
                         : input[positionStart..i].ToString();
                     positionStart = i + 1;
 
-                    // If the property type is DateTime the value is serialized as epoc time to reduce the size.
-                    // As such we need to manually DateTime types.
+                    // If the property type is DateTime the value is serialized as ticks.
+                    // As such we need to manually create DateTime types.
                     if (properties[currentColumn].PropertyType == typeof(DateTime) && long.TryParse(value, out long ticks))
                     {
                         properties[currentColumn].SetValue(result, new DateTime(ticks));
