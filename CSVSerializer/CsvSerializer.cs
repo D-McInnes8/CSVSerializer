@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CSVSerializer
 {
-    public static class CsvSerializer
+    public static partial class CsvSerializer
     {
         public readonly static CsvSerializerOptions DefaultOptions = new CsvSerializerOptions()
         {

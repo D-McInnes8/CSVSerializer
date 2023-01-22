@@ -1,19 +1,25 @@
 ﻿using CSVSerializer;
+using MessagePack;
 
 namespace CSVSerializer.Benchmarks
 {
+    [MessagePackObject]
     public readonly record struct WeatherTemperature
     {
         [CsvSerialization(Column = 1)]
+        [Key("0")]
         public int CountryId { get; init; }
 
         [CsvSerialization(Column = 2)]
+        [Key("1")]
         public Guid CityId { get; init; }
 
         [CsvSerialization(Column = 3)]
+        [Key("2")]
         public DateTime TimeGenerated { get; init; }
 
         [CsvSerialization(Column = 4)]
+        [Key("3")]
         public double Temperature { get; init; }
     }
 
