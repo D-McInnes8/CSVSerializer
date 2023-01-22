@@ -151,7 +151,7 @@ namespace CSVSerializer
                     // As such we need to manually DateTime types.
                     if (properties[currentColumn].PropertyType == typeof(DateTime) && long.TryParse(value, out long ticks))
                     {
-                        properties[currentColumn].SetValue(result, DateTimeHelpers.FromEpochTime(ticks));
+                        properties[currentColumn].SetValue(result, new DateTime(ticks));
                         currentColumn++;
                         continue;
                     }
@@ -191,7 +191,7 @@ namespace CSVSerializer
         private static string ConvertTypeToString<T>(in T data) =>
             data switch
             {
-                DateTime dateTime => DateTimeHelpers.ToEpochTime(dateTime).ToString(),
+                DateTime dateTime => dateTime.Ticks.ToString(),
                 DateTimeOffset dateTimeOffset => dateTimeOffset.UtcTicks.ToString(),
                 _ => data?.ToString() ?? string.Empty
             };
